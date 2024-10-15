@@ -102,11 +102,6 @@ password-generator/
 - **HTMX:** JavaScript library to provide dynamic functionality (generating passwords without page reloads).
 - **HTML/CSS:** Simple and clean frontend design for ease of use.
 
-> [!INFO]
-> 
-> You can obtain a password by specifying the **`length`** parameter directly in the URL. For example:
-> 
-> `http://127.0.0.1:8000/generate-password/?length=36`
 
 ## Contributing 🤝
 
