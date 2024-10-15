@@ -8,14 +8,6 @@ from django.utils.html import escape
 
 # Password generation logic
 def generate_password(request):
-    """
-    View function to generate a password using the length parameter
-    provided in the request. The length should be an integer between 4 and 128.
-    If the length is not provided, a default length of 8 is used.
-
-    Returns an HTTP response with the generated password.
-    If the length is invalid, returns a 400 error.
-    """
     try:
         # Get the length parameter from the request and convert it to an integer
         length = int(request.GET.get('length', 8))  # Default length of 8 if not provided
@@ -37,11 +29,5 @@ def generate_password(request):
         return HttpResponse("Invalid length", status=400)
 
 
-
 def index(request):
-    """
-    View function to render the main page of the password generator.
-
-    Returns an HTTP response with the rendered HTML template.
-    """
     return render(request, 'generator/index.html')
