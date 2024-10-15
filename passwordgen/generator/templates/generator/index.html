@@ -1,0 +1,99 @@
+<!-- generator/templates/generator/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <style>
+        /* Basic styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Centering the content */
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        label {
+            font-size: 16px;
+            color: #555;
+        }
+
+        input[type="number"] {
+            padding: 8px;
+            margin: 10px 0;
+            width: 100px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        /* Styling the button */
+        button {
+            padding: 10px 20px;
+            background-color: #007BAA;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Output area */
+        #password-output {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        strong {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Password Generator</h1>
+
+        <!-- Input field to specify password length -->
+        <label for="length">Password Length: </label>
+        <input type="number" id="length" name="length" value="8" min="4" max="128">
+
+        <!-- Button to generate password using HTMX -->
+        <button hx-get="{% url 'generate-password' %}"
+                hx-target="#password-output"
+                hx-trigger="click"
+                hx-include="#length">
+            Generate Password
+        </button>
+
+        <!-- Output area to display the generated password -->
+        <div id="password-output">
+            <strong>Your password will appear here</strong>
+        </div>
+    </div>
+</body>
+</html>
