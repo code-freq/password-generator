@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Password Generator</title>
-    <script src="https://unpkg.com/htmx.org@1.8.4"></script>
+    <script src="https://unpkg.com/htmx.org@2.0.0"></script>
     <style>
         /* Basic styling */
         body {
@@ -62,16 +62,34 @@
             background-color: #0056b3;
         }
 
-        /* Output area */
-        #password-output {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #333;
-        }
-
         strong {
             color: #555;
         }
+        #password-output .error-message {
+            background-color: transparent;
+            padding: 0;
+            color: darkred;
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-size: 16px;
+        }
+        #password-output .success-message {
+            font-weight: bold;
+            padding: 10px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            background-color: #2c2c2c;
+            color: seagreen;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+        #password-output:empty {
+            background-color: transparent;
+            padding: 0; /* Boşken ekstra boşluk olmaması için */
+        }
+
     </style>
 </head>
 <body>
@@ -85,24 +103,38 @@
                id="length"
                name="length"
                value="8" min="4"
-               max="128"
-               hx-get="{% url 'generate-password' %}"
-               hx-target="#password-output"
-               hx-trigger="keyup[keyCode==13]"
-               hx-include="#length">
+               max="128">
 
         <!-- Button to generate password using HTMX -->
         <button hx-get="{% url 'generate-password' %}"
                 hx-target="#password-output"
                 hx-trigger="click"
-                hx-include="#length">
+                hx-include="#length, form">
             Generate Password
         </button>
 
+        <!-- Options checkboxes -->
+        <form style="margin:20px">
+          <label>
+            <input type="checkbox" name="uppercase" value=True> Uppercase
+          </label>
+          <label>
+            <input type="checkbox" name="lowercase" value=True> Lowercase
+          </label>
+          <label>
+            <input type="checkbox" name="digits" value=True> Digits
+          </label>
+          <label>
+            <input type="checkbox" name="punctuation" value=True> Punctuation
+          </label>
+          <label>
+            <input type="checkbox" name="space" value=True> Space
+          </label>
+        </form>
+
+
         <!-- Output area to display the generated password -->
-        <div id="password-output">
-            <strong>Your password will appear here</strong>
-        </div>
+        <samp id="password-output"></samp>
     </div>
 </body>
 </html>

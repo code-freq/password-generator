@@ -3,21 +3,20 @@
 A simple web-based password generator built using Django and HTMX. This tool allows users to generate secure, random passwords of custom length with a simple, dynamic user interface.
 
 
-<img src="assets/index.png" alt="drawing" style="width:450px;"/>
+<img src="assets/1.png" alt="drawing" style="width:450px;"/>
 
-<img src="assets/index_password.png" alt="drawing" style="width:450px;"/>
+<img src="assets/2.png" alt="drawing" style="width:450px;"/>
 
-<img src="assets/index_50.png" alt="drawing" style="width:450px;"/>
+<img src="assets/4.png" alt="drawing" style="width:450px;"/>
 
+<img src="assets/3.png" alt="drawing" style="width:450px;"/>
 
 ## Features 🌟
 - Generate random, secure passwords using letters, digits, and special characters.
-- Specify custom password lengths.
+- Specify custom password types and lengths.
 - Dynamic frontend using HTMX for smooth, real-time interactions without full page reloads.
 - Easy to install and use locally.
 
-## Demo
-A live demo can be viewed [here](https://codefreq7.pythonanywhere.com/).
 
 ## Installation 🛠️
 
@@ -66,8 +65,9 @@ Now, open your browser and visit http://127.0.0.1:8000/ to use the password gene
 
 1. Open the app in your browser.
 2. Input the desired password length *(default is 8, minimum is 4, and maximum is 128 characters)*.
-3. Click the "Generate Password" button.
-4. Your password will appear instantly, without any page refresh, thanks to HTMX.
+3. Select password type using checkboxes.
+4. Click the "Generate Password" button.
+5. Your password will appear instantly, without any page refresh, thanks to HTMX.
 
 ## Project Structure 🏗️
 
